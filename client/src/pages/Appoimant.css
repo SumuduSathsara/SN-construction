@@ -1,0 +1,178 @@
+/*Appoimanta intro css*/
+.appointment {
+  position: relative;
+  width: 100%;
+  padding: 45px 0;
+}
+
+.appointment .section-header {
+  margin-bottom: 30px;
+}
+
+.appointment .section-header p{
+  color: #fdbe33;
+  font-weight: bold;
+  font-size: 20px;
+}
+.appointment .section-header h2{
+  font-weight:600;
+  font-size: 60px;
+  color: #030f27;
+  
+  
+}
+
+.appointment .appointment-img {
+  position: relative;
+  height: 100%;
+  margin-bottom: 35px;
+}
+
+.appointment .appointment-img img {
+  width: 500px;
+  height: 550px;
+  object-fit: cover;
+}
+
+.appointment .appointment-text p {
+  font-size: 16px;
+  text-align: justify;
+}
+
+.appointment .appointment-text a.btn {
+  position: relative;
+  margin-top: 15px;
+  padding: 15px 35px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #030f27;
+  border-radius: 0;
+  background: #fdbe33;
+  transition: .3s;
+}
+
+.appointment .appointment-text a.btn:hover {
+  color: #fdbe33;
+  background: #030f27;
+}
+
+@media (max-width: 767.98px) {
+  .appointment.appointment-img {
+      margin-bottom: 30px;
+      height: auto;
+  }
+}
+
+
+
+
+/*Appoimanta form css */
+.appointment-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 700px;
+  box-shadow: 0 5px 35px rgba(0,0,0,0.15);
+  margin: 0 auto;
+  margin-bottom: 5rem;
+
+  
+}
+.appointment-form h2, h3, h4 {
+  color: #333;
+}
+
+button {
+  margin: 5px;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #030f27;
+  border-radius: 5px;
+  background: #fdbe33;
+  transition: 0.3s;
+  border: none;
+}
+
+button:hover {
+  color: #fdbe33;
+  background: #030f27;
+}
+
+.form-container {
+  margin-top: 50px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="submit"],
+button[type="submit"],
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="submit"],
+button[type="ok"] {
+  background-color: #708090;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
+button[type="close"]{
+  background-color: #e60000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+
+}
+
+input[type="submit"]:hover,
+button[type="ok"]:hover,
+button[type="close"]:hover {
+  background-color: #030f27;
+}
+
+.confirmation {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
