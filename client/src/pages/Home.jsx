@@ -8,7 +8,7 @@ import myImage1 from "../images/image3.jpg";
 import myImage2 from "../images/image4.jpg";
 import myImage3 from "../images/image5.jpg";
 import myImage4 from "../images/image6.jpg";
-import myImage5 from "../images/building.jpg";
+import myImage5 from "../images/se_building.jpg";
 import myImage6 from "../images/Home.jpg";
 import myImage7 from "../images/design1.jpg";
 import myImage8 from "../images/maintain.jpg";

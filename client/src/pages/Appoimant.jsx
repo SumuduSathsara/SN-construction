@@ -85,9 +85,9 @@ const Appoimant = () => {
                   upcoming projects and receive personalized advice.
                 </p>
                 <p>
-                  When booking your appointment, please note that a deposit of RS.1000 is required to proceed with
+                  When booking your appointment, please note that a deposit of RS.1500 is required to proceed with
                   creating an estimate for your project. This deposit ensures that our team can begin preparing detailed
-                  cost estimates and plans tailored to your specific needs. Additionally, a service fee of RS.250 is due
+                  cost estimates and plans tailored to your specific needs. Additionally, a service fee of RS.500 is due
                   upon confirmation of your appointment. This fee ensures that our engineers can dedicate their time and
                   expertise to addressing your specific needs effectively.
                 </p>
@@ -190,8 +190,8 @@ const Appoimant = () => {
               <div>
                 <label>
                   {appointmentType === 'Create Estimate'
-                    ? 'Deposit Amount (RS.1000) - Credit Card Number: '
-                    : 'Service Fee (RS.250) - Credit Card Number: '}
+                    ? 'Deposit Amount (RS.1500) - Credit Card Number: '
+                    : 'Service Fee (RS.500) - Credit Card Number: '}
                 </label>
                 <input type="text" name="ccnumber" required />
               </div>

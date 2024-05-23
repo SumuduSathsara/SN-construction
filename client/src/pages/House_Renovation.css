@@ -1,42 +1,42 @@
-.about {
+.renovation {
     position: relative;
     width: 100%;
     padding: 45px 0;
 }
 
-.about .section-header {
+.renovation .section-header {
     margin-bottom: 30px;
 }
 
-.about .section-header p{
+.renovation .section-header p {
     color: #fdbe33;
     font-weight: bold;
     font-size: 20px;
 }
-.about .section-header h2{
-    font-weight:600;
+
+.renovation .section-header h2 {
+    font-weight: 600;
     font-size: 60px;
     color: #030f27;
-    
-    
 }
 
-.about .about-img {
+.renovation .renovation-img {
     position: relative;
-    height: 100%
+    height: 100%;
 }
 
-.about .about-img img {
+.renovation .renovation-img img {
     width: 400px;
     height: 450px;
     object-fit: cover;
 }
 
-.about .about-text p {
+.renovation .renovation-text p {
     font-size: 16px;
+    text-align: justify;
 }
 
-.about .about-text a.btn {
+.renovation .renovation-text a.btn {
     position: relative;
     margin-top: 15px;
     padding: 15px 35px;
@@ -49,13 +49,13 @@
     transition: .3s;
 }
 
-.about .about-text a.btn:hover {
+.renovation .renovation-text a.btn:hover {
     color: #fdbe33;
     background: #030f27;
 }
 
 @media (max-width: 767.98px) {
-    .about .about-img {
+    .renovation .renovation-img {
         margin-bottom: 30px;
         height: auto;
     }
