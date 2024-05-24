@@ -8,10 +8,6 @@ import Back from '../components/Back'
 
 
 
-
-
-
-
 export default function Contact() {
     const [values,setValues]=useState({
         firstname:'',
@@ -34,8 +30,7 @@ export default function Contact() {
     }
 
 
-   const submit = () => {
-  fetch('http://localhost:3001/sever/message', {
+   const submit = () => {fetch('http://localhost:3001/sever/message', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
