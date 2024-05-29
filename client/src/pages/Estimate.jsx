@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
+
 
 const EstimateForm = () => {
   const [formData, setFormData] = useState({
@@ -43,6 +46,7 @@ const EstimateForm = () => {
     let totalWoodWorkCost = 0;
     let totalPaintCost = 0;
     let totalMasonryCost = 0;
+    
 
 
 // Calculate tile work cost
@@ -53,16 +57,16 @@ const EstimateForm = () => {
 
       switch (tileType) {
         case 'ceramic':
-          tileCost = 905.00; // $3 per square foot
-          laborCost = 1000.00; // $5 per square foot
+          tileCost = 905.00; // square foot
+          laborCost = 1000.00; 
           break;
         case 'porcelain':
-          tileCost = 1206.00; // $5 per square foot
-          laborCost = 1000.00; // $6 per square foot
+          tileCost = 1206.00;
+          laborCost = 1000.00;
           break;
         case 'marble':
-          tileCost = 1810.00; // $10 per square foot
-          laborCost = 1000.00; // $10 per square foot
+          tileCost = 1810.00; 
+          laborCost = 1000.00; 
           break;
         default:
           break;
@@ -87,19 +91,19 @@ const EstimateForm = () => {
       switch (paintingType) {
         case 'interior':
           PaintCost = 4; // $3 per square foot
-          laborCost = 5; // $5 per square foot
+          laborCost = 5;
           break;
         case 'exterior':
-          PaintCost = 5; // $5 per square foot
-          laborCost = 6; // $6 per square foot
+          PaintCost = 5;
+          laborCost = 6;
           break;
         case 'oil-based':
-          PaintCost = 10; // $10 per square foot
-          laborCost = 10; // $10 per square foot
+          PaintCost = 10; 
+          laborCost = 10; 
           break;
         case 'water-based':
-          PaintCost = 10; // $10 per square foot
-          laborCost = 10; // $10 per square foot
+          PaintCost = 10; 
+
           break;
         default:
           break;
@@ -116,19 +120,19 @@ const EstimateForm = () => {
   switch (MasonryType) {
     case 'concrete':
       masonryCost = 905.00; // $3 per square foot
-      laborCost = 1000.00; // $5 per square foot
+      laborCost = 1000.00; 
       break;
     case 'redBricks':
-      masonryCost = 1206.00; // $5 per square foot
-      laborCost = 1000.00; // $6 per square foot
+      masonryCost = 1206.00; 
+      laborCost = 1000.00;
       break;
     case 'flyashBricks':
-      masonryCost = 1810.00; // $10 per square foot
-      laborCost = 1000.00; // $10 per square foot
+      masonryCost = 1810.00; 
+      laborCost = 1000.00; 
       break;
       case 'Brichwall':
-        masonryCost = 1810.00; // $10 per square foot
-      laborCost = 1000.00; // $10 per square foot
+        masonryCost = 1810.00; 
+      laborCost = 1000.00; 
       break;
     default:
       break;
@@ -136,14 +140,34 @@ const EstimateForm = () => {
   totalMasonryCost = areaToBeMasonry * (masonryCost + laborCost);
 }
    
-
+ // Calculate total cost
     const total = totalTileCost + totalWoodWorkCost + totalPaintCost + totalMasonryCost;
+    // Update state with calculated costs
     setTotalTileCost(totalTileCost);
     setTotalWoodWorkCost(totalWoodWorkCost);
     setTotalPaintCost(totalPaintCost);
     setTotalMasonryCost(totalMasonryCost);
     setTotalCost(total);
   };
+
+  //send data to backend
+  const data = {
+    ...formData,
+    totalTileCost,
+    totalWoodWorkCost,
+    totalPaintCost,
+    totalMasonryCost,
+    totalCost: total,
+  };
+
+  axios.post('http://localhost:3001/sever/estimate/create',data)
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('There was an error', error);
+    });
+  
 
   const resetForm = () => {
     setFormData({
