@@ -11,6 +11,8 @@ const Appoimant = () => {
   const [showBookingForm, setShowBookingForm] = useState(false);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [appointmentSubmitted, setAppointmentSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [paymentErrors, setPaymentErrors] = useState({});
 
   const bookingOffers = {
     Monday: { morning: 5, evening: 3 },
@@ -31,8 +33,72 @@ const Appoimant = () => {
     setShowPaymentForm(false);
   };
 
+    //validation for appoiment form
+  const validateForm = (data) => {
+    const errors = {};
+
+    if (!/^[A-Za-z\s]+$/.test(data.name)) {
+      errors.name = 'Name can only contain alphabetic characters and spaces.';
+    }
+
+    if (!/^\d{12}$/.test(data.nic) && !/^\d{9}[Vv]$/.test(data.nic)) {
+      errors.nic = 'NIC must be exactly 12 digits or 9 digits followed by V.';
+    }
+
+    if (!/^\d{10}$/.test(data.phone)) {
+      errors.phone = 'Phone number must be exactly 10 digits.';
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      errors.email = 'Invalid email format.';
+    }
+
+    if (!/^[a-zA-Z\s]+$/.test(data.city)) {
+      errors.city = 'City must contain only letters and spaces.';
+    }
+    const date = new Date(data.date);
+    const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+    if (day !== 'Monday' && day !== 'Thursday') {
+      errors.date = 'Date must be a Monday or Thursday.';
+    }
+
+    return errors;
+  };
+  //payment form validation
+  const validatePaymentForm = (data) => {
+    const errors = {};
+
+    if (!/^\d{16}$/.test(data.ccnumber)) {
+      errors.ccnumber = 'Credit card number must be exactly 16 digits.';
+    }
+
+    if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(data.ccexp)) {
+      errors.ccexp = 'Invalid expiration date. Use MM/YY format.';
+    }
+
+    if (!/^\d{3,4}$/.test(data.cccvv)) {
+      errors.cccvv = 'CVV must be 3 or 4 digits.';
+    }
+
+    return errors;
+  };
+
+
   const handleBookingSubmit = (event) => {
     event.preventDefault();
+    const formData = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      nic: event.target.nic.value,
+      phone: event.target.phone.value,
+      city: event.target.city.value,
+      date: selectedDate,
+    };
+
+    const errors = validateForm(formData);
+    setFormErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
     if (appointmentType === 'Discuss Ongoing Project') {
       setAppointmentSubmitted(true);
       setShowBookingForm(false);
@@ -46,18 +112,34 @@ const Appoimant = () => {
         setShowBookingForm(false);
       }
     }
+  }
   };
+
+  
 
   const handlePaymentSubmit = (event) => {
     event.preventDefault();
+    const paymentData = {
+      ccnumber: event.target.ccnumber.value,
+      ccexp: event.target.ccexp.value,
+      cccvv: event.target.cccvv.value,
+    };
+
+    const errors = validatePaymentForm(paymentData);
+    setPaymentErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
     setAppointmentSubmitted(true);
     setShowPaymentForm(false);
+}
   };
 
   const handleClose = () => {
     setShowBookingForm(false);
     setShowPaymentForm(false);
     setAppointmentSubmitted(false);
+    setFormErrors({});
+    setPaymentErrors({});
   };
 
   return (
@@ -137,22 +219,27 @@ const Appoimant = () => {
               <div>
                 <label>Name: </label>
                 <input type="text" name="name" required />
+                {formErrors.name && <span className="error text-red-500">{formErrors.name}</span>}
               </div>
               <div>
                 <label>Email: </label>
                 <input type="email" name="email" required />
+                {formErrors.email && <span className="error text-red-500">{formErrors.email}</span>}
               </div>
               <div>
                 <label>Phone: </label>
                 <input type="tel" name="phone" required />
+                {formErrors.phone && <span className="error text-red-500">{formErrors.phone}</span>}
               </div>
               <div>
                 <label>NIC: </label>
                 <input type="text" name="nic" required />
+                {formErrors.nic && <span className="error  text-red-500">{formErrors.nic}</span>}
               </div>
               <div>
                 <label>City: </label>
                 <input type="text" name="city" required />
+                {formErrors.city && <span className="error  text-red-500">{formErrors.city}</span>}
               </div>
               <div>
                 <label>Date: </label>
@@ -162,6 +249,7 @@ const Appoimant = () => {
                   onChange={(e) => setSelectedDate(e.target.value)}
                   required
                 />
+                 {formErrors.date && <span className="error  text-red-500">{formErrors.date}</span>}
               </div>
               <div>
                 <label>Type of Appointment: </label>
@@ -194,14 +282,17 @@ const Appoimant = () => {
                     : 'Service Fee (RS.500) - Credit Card Number: '}
                 </label>
                 <input type="text" name="ccnumber" required />
+                {paymentErrors.ccnumber && <span className="error text-red-500">{paymentErrors.ccnumber}</span>}
               </div>
               <div>
                 <label>Expiration Date: </label>
-                <input type="text" name="ccexp" required />
+                <input type="text" name="ccexp"   placeholder="MM/YY" required />
+                {paymentErrors.ccexp && <span className="error text-red-500">{paymentErrors.ccexp}</span>}
               </div>
               <div>
-                <label>CVV: </label>
+                <label>CVV (Card Verification Value): </label>
                 <input type="text" name="cccvv" required />
+                {paymentErrors.cccvv && <span className="error text-red-500">{paymentErrors.cccvv}</span>}
               </div>
               <button type="ok">Pay</button>
               <button type="close" onClick={handleClose}>
