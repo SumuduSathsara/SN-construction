@@ -5,14 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { persistor, store } from './redux/store.js';
 import { Provider } from 'react-redux';
-
 import { PersistGate } from 'redux-persist/integration/react';
+import { AuthProvider } from './context/AuthContext.js'; // Adjusted path
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <PersistGate persistor={persistor}loading={null}>
-    <App />
+    <PersistGate persistor={persistor} loading={null}>
+      <AuthProvider> {/* Added AuthProvider here */}
+        <App />
+      </AuthProvider>
     </PersistGate>
   </Provider>
 );

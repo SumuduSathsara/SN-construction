@@ -285,7 +285,7 @@ const Appoimant = () => {
                 {paymentErrors.ccnumber && <span className="error text-red-500">{paymentErrors.ccnumber}</span>}
               </div>
               <div>
-                <label>Expiration Date: </label>
+                <label>Expiration Date (MM/YY): </label>
                 <input type="text" name="ccexp"   placeholder="MM/YY" required />
                 {paymentErrors.ccexp && <span className="error text-red-500">{paymentErrors.ccexp}</span>}
               </div>

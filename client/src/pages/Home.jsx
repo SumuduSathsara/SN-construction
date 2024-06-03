@@ -2,6 +2,7 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPenRuler,faPeopleGroup,faPersonDigging,faScrewdriverWrench,} from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faInstagram, faLinkedin,faTwitter } from '@fortawesome/free-brands-svg-icons'
 import "./Home.css";
 
 import myImage1 from "../images/image3.jpg";
@@ -12,6 +13,7 @@ import myImage5 from "../images/se_building.jpg";
 import myImage6 from "../images/Home.jpg";
 import myImage7 from "../images/design1.jpg";
 import myImage8 from "../images/maintain.jpg";
+import myImage9 from '../images/team-2.jpg'
 
 import Carousel from "react-bootstrap/Carousel";
 
@@ -26,7 +28,7 @@ export default function Home() {
           <Carousel.Caption>
             <p class="animated fadeInRight">Professional Builder</p>
             <h1 class="animated fadeInLeft">We Build Your Home</h1>
-            <a class="btn animated fadeInUp" href="#">
+            <a class="btn animated fadeInUp" href="/Estimate">
               Estimate
             </a>
           </Carousel.Caption>
@@ -37,7 +39,7 @@ export default function Home() {
           <Carousel.Caption>
             <p class="animated fadeInRight">We Are Designe</p>
             <h1 class="animated fadeInLeft">For Your Dream Home</h1>
-            <a class="btn animated fadeInUp" href="#">
+            <a class="btn animated fadeInUp" href="/Estimate">
               Estimate
             </a>
           </Carousel.Caption>
@@ -48,7 +50,7 @@ export default function Home() {
           <Carousel.Caption>
             <p class="animated fadeInRight">We Are Professional</p>
             <h1 class="animated fadeInLeft">For Your Dream Project</h1>
-            <a class="btn animated fadeInUp" href="#">
+            <a class="btn animated fadeInUp" href="/Estimate">
               Estimate
             </a>
           </Carousel.Caption>
@@ -73,7 +75,7 @@ export default function Home() {
 
                   <h2>Best Service</h2>
                   <p>
-                    {" "}
+                    
                     Our dedication to excellence in the construction industry is
                     centered on precision, reliability, and client satisfaction,
                     aiming to establish an enduring legacy.
@@ -93,7 +95,7 @@ export default function Home() {
 
                   <h2>Expert Worker</h2>
                   <p>
-                    {" "}
+                   
                     Our team of skilled professionals consistently deliver
                     exceptional performance, accuracy and dedication, exceeding
                     customer expectations.
@@ -144,6 +146,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      
 
       <div className="about wow fadeInUp" data-wow-delay="0.1s">
         <div className="container">
@@ -174,7 +177,7 @@ export default function Home() {
                   residential and commercial buildings to infrastructure
                   developments.
                 </p>
-                <a className="btn" href="">
+                <a className="btn" href="/About">
                   Learn More
                 </a>
               </div>
@@ -285,7 +288,7 @@ export default function Home() {
                 <div className="Service-text">
                   <h2>Architecture Design</h2>
                   <p>
-                    {" "}
+                  
                     Site Analysis,Structural Integrity,Materials and
                     Construction,Aesthetic and Cultural Considerations
                   </p>
@@ -317,6 +320,88 @@ export default function Home() {
         </div>
       </div>
       
+
+      <div className="team">
+                <div className="container">
+                    <div className="section-header text-center">
+                        <h1>Meet Our Engineer</h1>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div className="team-item">
+                                <div className="team-img">
+                                <img className="d-block w-100"src={myImage9} alt="First slide"/>
+                                </div>
+                                <div className="team-text">
+                                    <h2>Adam Phillips</h2>
+                                    <p>CEO & Founder</p>
+                                </div>
+                                <div className="team-social">
+                                <a href='#'><FontAwesomeIcon icon={faTwitter} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faFacebook} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faLinkedin} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faInstagram} /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                            <div className="team-item">
+                                <div className="team-img">
+                                <img className="d-block w-100"src={myImage9} alt="First slide"/>
+                                </div>
+                                <div className="team-text">
+                                    <h2>Dylan Adams</h2>
+                                    <p>Civil Engineer</p>
+                                </div>
+                                <div className="team-social">
+                                <a href='#'><FontAwesomeIcon icon={faTwitter} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faFacebook} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faLinkedin} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faInstagram} /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <div className="team-item">
+                                <div className="team-img">
+                                <img className="d-block w-100"src={myImage9} alt="First slide"/>
+                                </div>
+                                <div className="team-text">
+                                    <h2>Jhon Doe</h2>
+                                    <p>Interior Designer</p>
+                                </div>
+                                <div className="team-social">
+                                <a href='#'><FontAwesomeIcon icon={faTwitter} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faFacebook} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faLinkedin} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faInstagram} /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <div className="team-item">
+                                <div className="team-img">
+                                <img className="d-block w-100"src={myImage9} alt="First slide"/>
+                                </div>
+                                <div className="team-text">
+                                    <h2>Jhon Doe</h2>
+                                    <p>Interior Designer</p>
+                                </div>
+                                <div className="team-social">
+                                <a href='#'><FontAwesomeIcon icon={faTwitter} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faFacebook} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faLinkedin} /></a>
+                                <a href='#'><FontAwesomeIcon icon={faInstagram} /></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                       
+                    </div>
+                </div>
+            </div>
+
     </div>
   );
 }
