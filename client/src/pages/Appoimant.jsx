@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Appoimant.css';
 import Back from '../components/Back';
 import myImage1 from '../images/Renovation (2).jpg';
+import axios from 'axios';
 
 const Appoimant = () => {
   const [selectedDay, setSelectedDay] = useState(null);
@@ -33,7 +34,6 @@ const Appoimant = () => {
     setShowPaymentForm(false);
   };
 
-    //validation for appoiment form
   const validateForm = (data) => {
     const errors = {};
 
@@ -56,6 +56,7 @@ const Appoimant = () => {
     if (!/^[a-zA-Z\s]+$/.test(data.city)) {
       errors.city = 'City must contain only letters and spaces.';
     }
+
     const date = new Date(data.date);
     const day = date.toLocaleDateString('en-US', { weekday: 'long' });
     if (day !== 'Monday' && day !== 'Thursday') {
@@ -64,7 +65,7 @@ const Appoimant = () => {
 
     return errors;
   };
-  //payment form validation
+
   const validatePaymentForm = (data) => {
     const errors = {};
 
@@ -83,8 +84,7 @@ const Appoimant = () => {
     return errors;
   };
 
-
-  const handleBookingSubmit = (event) => {
+  const handleBookingSubmit = async (event) => {
     event.preventDefault();
     const formData = {
       name: event.target.name.value,
@@ -99,23 +99,29 @@ const Appoimant = () => {
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
+      try {
+        const response = await axios.post('http://localhost:3001/sever/appointments', formData);
+        console.log('Appointment created:', response.data);
+        setAppointmentSubmitted(true);
+        setShowBookingForm(false);
+        setShowPaymentForm(false);
+      } catch (error) {
+        console.error('Error creating appointment:', error);
+        // Handle error if needed
+      }
+    }
+
     if (appointmentType === 'Discuss Ongoing Project') {
       setAppointmentSubmitted(true);
       setShowBookingForm(false);
       setShowPaymentForm(false);
     } else {
-      if (appointmentType === 'Create Estimate') {
-        setShowPaymentForm(true);
-        setShowBookingForm(false);
-      } else if (appointmentType === 'Discuss New Project') {
+      if (appointmentType === 'Create Estimate' || appointmentType === 'Discuss New Project') {
         setShowPaymentForm(true);
         setShowBookingForm(false);
       }
     }
-  }
   };
-
-  
 
   const handlePaymentSubmit = (event) => {
     event.preventDefault();
@@ -129,9 +135,9 @@ const Appoimant = () => {
     setPaymentErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-    setAppointmentSubmitted(true);
-    setShowPaymentForm(false);
-}
+      setAppointmentSubmitted(true);
+      setShowPaymentForm(false);
+    }
   };
 
   const handleClose = () => {
@@ -141,6 +147,7 @@ const Appoimant = () => {
     setFormErrors({});
     setPaymentErrors({});
   };
+
 
   return (
     <>
@@ -264,7 +271,7 @@ const Appoimant = () => {
                   <option value="Discuss Ongoing Project">Discuss Ongoing Project</option>
                 </select>
               </div>
-              <button type="ok">Book Appointment</button>
+              <button type="submit">Book Appointment</button>
               <button type="close" onClick={handleClose}>
                 Close
               </button>
@@ -294,7 +301,7 @@ const Appoimant = () => {
                 <input type="text" name="cccvv" required />
                 {paymentErrors.cccvv && <span className="error text-red-500">{paymentErrors.cccvv}</span>}
               </div>
-              <button type="ok">Pay</button>
+              <button type="submit">Pay</button>
               <button type="close" onClick={handleClose}>
                 Close
               </button>
@@ -303,7 +310,12 @@ const Appoimant = () => {
         )}
         {appointmentSubmitted && (
           <div className="confirmation">
-            <h4>Your appointment has been successfully submitted!</h4>
+            <p>Thank You!</p>
+            <h2>Your Appointment is Confirmed</h2>
+            <p>
+                Thank you for scheduling an appointment with us. Our team will reach out to you shortly to confirm the
+                details. We look forward to assisting you with your construction project.
+              </p>
           </div>
         )}
       </div>

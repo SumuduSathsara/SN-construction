@@ -1,16 +1,19 @@
+// models/Appointment.model.js
 import mongoose from 'mongoose';
 
-const appointmentSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    nic: String,
-    phone: String,
-    city: String,
-    date: Date,
-    appointmentType: String,
-    paymentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Payment' },
-  });
+const AppointmentSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  nic: String,
+  phone: Number,
+  city: String,
+  date: Date,
+  appointmentType: String,
+  ccnumber: Number,
+  ccexp: String,
+  cccvv: Number,
+});
 
-  const Appointment = mongoose.model('Appointment', appointmentSchema);
+const Appointment = mongoose.model('Appointment', AppointmentSchema);
 
-  export default Appointment;
+export default Appointment;
