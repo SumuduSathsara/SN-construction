@@ -1,0 +1,14 @@
+.news-slide {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .news-item {
+    width: 100%;
+    max-width: 600px; /* You can adjust the max-width as per your requirement */
+    height: 500px; /* Set a fixed height for all news items */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
