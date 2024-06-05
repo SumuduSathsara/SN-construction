@@ -32,6 +32,7 @@ const Appoimant = () => {
     setSelectedTime(time);
     setShowBookingForm(true);
     setShowPaymentForm(false);
+    setAppointmentSubmitted(false);
   };
 
   const validateForm = (data) => {
@@ -93,6 +94,8 @@ const Appoimant = () => {
       phone: event.target.phone.value,
       city: event.target.city.value,
       date: selectedDate,
+      time: selectedTime,
+      appointmentType: appointmentType,
     };
 
     const errors = validateForm(formData);
