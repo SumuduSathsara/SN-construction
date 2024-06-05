@@ -79,6 +79,11 @@ export default function Signup() {
           className='bg-slate-100 p-3 rounded-lg'
           onChange={handleChange}
         />
+         {/* Temporary role field for testing */}
+         <select id="role" className='bg-slate-100 p-3 rounded-lg' onChange={handleChange}>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
         <button
           disabled={loading}
           className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'

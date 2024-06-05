@@ -32,7 +32,11 @@ export default function SignIn() {
         return;
       }
       dispatch(signInSuccess(data));
-      navigate('/');
+       if (data.role === 'admin') {
+        navigate('/admin/Mainlayout'); // Redirect to admin main layout
+      } else {
+        navigate('/'); // Redirect to user homepage
+      }
     } catch (error) {
       dispatch(signInFailure(error));
     }
