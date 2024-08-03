@@ -3,6 +3,7 @@ import Adminheader from "./Adminheader";
 
 
 
+
 //import { tokens } from "../theme";
 
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -48,7 +49,7 @@ const Dashboard = () => {
       
      
     </Box>
-    <div className='grid grid-cols-5 gap-6 my-4'>
+    <div className='grid grid-cols-5 gap-2 my-4'>
       <div className='flex flex-col justify-around p-4 rounded-md bg-blue-500 text-white'>
         <div className='flex items-center justify-between'>
           <h5>PROJECT</h5>

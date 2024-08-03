@@ -8,10 +8,9 @@ const AppointmentSchema = new mongoose.Schema({
   phone: Number,
   city: String,
   date: Date,
-  appointmentType: String,
-  ccnumber: Number,
-  ccexp: String,
-  cccvv: Number,
+  time:String,
+  appointmentType: String
+ 
 });
 
 const Appointment = mongoose.model('Appointment', AppointmentSchema);

@@ -3,8 +3,7 @@ import axios from 'axios';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './NewsList.css'; // Assuming you create a separate CSS file for styling
-import './NewsList.css'
+import './NewsList.css'; 
 
 const NewsList = () => {
   const [news, setNews] = useState([]);
@@ -26,12 +25,12 @@ const NewsList = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2, // Show 3 slides at once
-    slidesToScroll: 2, // Scroll 3 slides at once
+    slidesToShow: 2, 
+    slidesToScroll: 2, 
     autoplay: true,
     autoplaySpeed: 3000,
     adaptiveHeight: true,
-    arrows: false // Remove arrows for a cleaner, automated look
+    arrows: false 
   };
 
   return (
